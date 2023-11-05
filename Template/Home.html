@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
+
+    <style>
+        .Heading1 {
+            text-align: center;
+            align-items: center;
+            color: rgb(0, 170, 255);
+        }
+
+        .content {
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body style="text-align: center; align-items: center;">
+    <!--========== Code for showing message -->
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Alert!</strong> {{ message.message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h1 class="Heading1">Home Page</h1>
+    <!--====================== If user is logged in or logged out ======================== -->
+    <div class="content">
+        {% if request.user.is_authenticated %}
+        <p>Welcome, {{ request.user.username }}! You are logged in.</p>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <p>You are logged in.</p>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

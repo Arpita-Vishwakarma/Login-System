@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="'en'">
+
+<head>
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body style="text-align: center; align-items: center;">
+    {% for message in messages %}
+    <div class="alert alert -{{message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Alert !</strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h1>Sign In Here</h1>
+
+    <form action="/" method="post">
+        {% csrf_token %}
+        <label for="Password">Username:</label><br>
+        <input type="username" id="lname" name="User_name"><br><br>
+        <label for="Password">Password:</label><br>
+        <input type="password" id="lname" name="user_pass"><br><br>
+
+        <!--## It's very very imp to have input type="submit" and value="Login", autherwise won't be records taken...-->
+        <input type="submit" value="Login" />
+    </form>
+    <div>
+        <a href="{% url 'ragi' %}">I don't have account</a>
+    </div>
+
+</body>
+
+</html>

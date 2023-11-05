@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Register Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body style="text-align: center; align-items: center;">
+    {% for message in messages %}
+    <div class="alert alert -{{message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Alert !</strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h1 class="Heading1">Sign Up Here</h1>
+
+    <form method="post" action="/ragi/">
+        {% csrf_token %}
+        <label for="Username">Username:</label><br>
+        <input type="text" name="Username"><br>
+
+        <label for="first_name">First Name:</label><br>
+        <input type="text" name="first_name"><br>
+
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" name="last_name"><br>
+
+        <label for="Email">Email:</label><br>
+        <input type="email" name="Email"><br>
+        <label for="Password">Password:</label><br>
+        <input type="password" name="Password"><br><br>
+        <label for="confirm_pass">Confirm Password:</label><br>
+        <input type="password" name="confirm_pass"><br><br>
+
+        <!--## It's very very imp to have input type="submit" and value="Login", autherwise won't be records taken...-->
+        <input type="submit" value="Register" />
+    </form>
+    <div>
+        <a href="{% url 'Login' %}">I have already account</a>
+    </div>
+</body>
+
+</html>
