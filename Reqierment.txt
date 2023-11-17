@@ -1,0 +1,5 @@
+Django should be installed
+# in the same directory as this script. If you have not yet done so, please run:
+# python setup.py install
+import django
+from django import get_version
